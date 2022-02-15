@@ -1,0 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations_rotating.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 22:03:28 by shalfbea          #+#    #+#             */
+/*   Updated: 2022/02/15 22:16:54 by shalfbea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+/*
+** ra (rotate a): Shift up all elements of stack a by 1.
+** The first element becomes the last one.
+*/
+void	op_ra(t_list **a, t_list **b, char mode)
+{
+	int	tmp;
+
+	if (mode)
+		ft_putstr("ra\n");
+	if (*a != NULL)
+	{
+		if ((*a)->next != NULL)
+		{
+			tmp = ft_lst_pop_first(a);
+			ft_lst_add_back(a, tmp);
+		}
+	}
+	if (DEBUG_OUTPUT && mode)
+		heaps_print(*a, *b);
+}
+
+/*
+** rb (rotate b): Shift up all elements of stack b by 1.
+** The first element becomes the last one.
+*/
+void	op_rb(t_list **a, t_list **b, char mode)
+{
+	if (mode)
+		ft_putstr("rb\n");
+	op_ra(a, b, 0);
+	if (DEBUG_OUTPUT && mode)
+		heaps_print(*a, *b);
+}
+
+/*
+** rr : ra and rb at the same time.
+*/
+void	op_rr(t_list **a, t_list **b, char mode)
+{
+	if (mode)
+		ft_putstr("rr\n");
+	op_ra(a, b, 0);
+	op_rb(a, b, 0);
+	if (DEBUG_OUTPUT && mode)
+		heaps_print(*a, *b);
+}

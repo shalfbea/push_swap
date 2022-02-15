@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:57:47 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/12 19:35:52 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/15 22:02:39 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_putstr(char *s)
 	int	len;
 
 	if (s == NULL)
-		return ;
+		return (0);
 	len = 0;
 	while (s[len])
 		len++;
@@ -34,12 +34,13 @@ static char	ft_putnbr_cases(int *n)
 	if (*n == -2147483648)
 	{
 		write(1, "-2147483648", 11);
-		return (1);
+		return (2);
 	}
 	if (*n < 0)
 	{
 		write(1, "-", 1);
 		*n *= -1;
+		return (1);
 	}
 	return (0);
 }
@@ -53,9 +54,11 @@ int	ft_putnbr(int n)
 	int		tmp;
 	int		tens;
 	char	cur;
+	int		sign;
 
-	if (ft_putnbr_cases(&n))
-		return ;
+	sign = ft_putnbr_cases(&n);
+	if (sign == 2)
+		return (11);
 	tmp = n;
 	tens = 1;
 	while (tmp > 9)
@@ -63,13 +66,46 @@ int	ft_putnbr(int n)
 		tmp /= 10;
 		tens *= 10;
 	}
-	tmp = tens;
+	tmp = 0;
 	while (tens > 0)
 	{
 		cur = (char)(n / tens) + '0';
 		write(1, &cur, 1);
+		tmp++;
 		n %= tens;
 		tens /= 10;
 	}
-	return (tmp);
+	return (tmp + sign);
+}
+
+void	error_and_exit(void)
+{
+	ft_putstr("Error!");
+	exit(0);
+}
+
+void	heaps_print(t_list *a, t_list *b)
+{
+	int	a_len;
+
+	ft_putstr("============\n");
+	while (a || b)
+	{
+		if (a)
+		{
+			a_len = ft_putnbr(a->data);
+			a = a->next;
+		}
+		else
+			a_len = 0;
+		if (b)
+		{
+			while(++a_len < 11)
+				ft_putstr(" ");
+			ft_putnbr(b->data);
+			b = b->next;
+		}
+		ft_putstr("\n");
+	}
+	ft_putstr("============\n");
 }

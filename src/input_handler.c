@@ -6,73 +6,47 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:16:41 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/12 19:57:26 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:32:42 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_isspace(char c)
+void	lst_clever_append(t_list **lst, t_list **cur, int num)
 {
-	if (c == ' ' || c == '\f' || c == '\r')
-		return (1);
-	if (c == '\t' || c == '\n' || c == '\v')
-		return (1);
-	return (0);
-}
-
-static int	ft_atoi_helper(const char *str, int *sign)
-{
-	int	i;
-
-	i = 0;
-	while (ft_isspace(str[i]))
-		++i;
-	if (str[i] == '-')
+	if (*lst == NULL)
 	{
-		*sign = -1;
-		++i;
+		*cur = ft_lstnew(num);
+		*lst = *cur;
 	}
-	else if (str[i] == '+')
-		++i;
-	return (i);
-}
-
-int	ft_atoi(const char *str)
-{
-	size_t	res;
-	int		i;
-	int		sign;
-
-	sign = 1;
-	res = 0;
-	i = ft_atoi_helper(str, &sign);
-	while (ft_isdigit(str[i]))
+	else
 	{
-		res = (res * 10) + str[i] - '0';
-		++i;
-		if ((sign > 0) && (res > 2147483647))
-			return (-1);
-		if ((sign < 0) && (res > 2147483648))
-			return (0);
+		(*cur)->next = ft_lstnew(num);
+		*cur = (*cur)->next;
 	}
-	return ((int) res * sign);
 }
 
-t_list *ps_inputs(int argc, char **argv)
+t_list	*ps_inputs(int argc, char **argv)
 {
-	t_list *lst;
-	t_list *cur;
+	t_list	*lst;
+	t_list	*cur;
 	int		i;
+	int		arg;
 
+	lst = NULL;
+	cur = NULL;
 	if (argc < 1)
+		error_and_exit();
+	arg = 0;
+	while (++arg < argc)
 	{
-		ft_putstr("Error!");
-		exit(0);
+		if (!argv[arg][0])
+			error_and_exit();
+		i = 0;
+		while (argv[arg][i])
+			lst_clever_append(&lst, &cur, ft_atoi_mod(argv[arg], &i));
 	}
-	i = 0;
-	while (++i < argc)
-	{
-		if type()
-	}
+	if (!lst)
+		error_and_exit();
+	return (lst);
 }

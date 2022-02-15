@@ -3,13 +3,14 @@ HEADER := include/push_swap.h
 LIBFT = libft/libft.a
 CC := clang
 
-TestingFlags := -fsanitize=address -g3
+TestingFlags := -fsanitize=address
 
 FLAGS := -Wall -Wextra -Werror -Imlx -I./include -g3 -I./libft/include
 PUSH_SWAP := push_swap
 
 SRC_FILES_PUSH_SWAP = $(addprefix src/, push_swap.c input_handler.c output_utils.c \
-						)
+						lst_utils.c ft_atoi_modded.c \
+						operations_swap_push.c operations_rotating.c operations_reverse_rotating.c)
 
 OBJ_PUSH_SWAP = $(patsubst %.c, %.o, $(SRC_FILES_PUSH_SWAP))
 OBJ_CHECKER = $(patsubst %.c, %.o, $(SRC_FILES_CHECKER))
