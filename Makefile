@@ -8,17 +8,18 @@ TestingFlags := -fsanitize=address -g3
 FLAGS := -Wall -Wextra -Werror -Imlx -I./include -g3 -I./libft/include
 PUSH_SWAP := push_swap
 
-SRC_FILES_PUSH_SWAP = $(addprefix src/, push_swap.c input_handler.c)
+SRC_FILES_PUSH_SWAP = $(addprefix src/, push_swap.c input_handler.c output_utils.c \
+						)
 
 OBJ_PUSH_SWAP = $(patsubst %.c, %.o, $(SRC_FILES_PUSH_SWAP))
 OBJ_CHECKER = $(patsubst %.c, %.o, $(SRC_FILES_CHECKER))
 
 RM := rm -rf
 
-all: $(LIBFT) $(HEADER) $(PUSH_SWAP) $(OBJ)
+all: $(HEADER) $(PUSH_SWAP) $(OBJ)
 
-$(PUSH_SWAP): $(LIBFT) $(OBJ_PUSH_SWAP) $(HEADER)
-	$(CC) $(OBJ_PUSH_SWAP) $(LIBFT) $(FT_PRINTF) -o $(PUSH_SWAP)
+$(PUSH_SWAP): $(OBJ_PUSH_SWAP) $(HEADER)
+	$(CC) $(OBJ_PUSH_SWAP) -o $(PUSH_SWAP)
 
 $(LIBFT) :
 	make -C ./libft
@@ -30,10 +31,8 @@ bonus : $(all)
 
 clean:
 	$(RM) $(OBJ_PUSH_SWAP)
-	make -C ./libft clean
 fclean: clean
 	$(RM) $(PUSH_SWAP)
-	make -C ./libft fclean
 #ALSO NEED TO CLEAN libft
 re: fclean all
 
