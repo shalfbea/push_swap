@@ -5,7 +5,7 @@ CC := clang
 
 TestingFlags := -fsanitize=address
 
-FLAGS := -Wall -Wextra -Werror -Imlx -I./include -g3 -I./libft/include
+FLAGS := -Wall -Wextra -Werror -I./include -g3 -I./libft/include
 PUSH_SWAP := push_swap
 
 SRC_FILES_PUSH_SWAP = $(addprefix src/, main.c input_handler.c output_utils.c \
