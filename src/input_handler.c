@@ -6,13 +6,13 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:16:41 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/15 18:32:42 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/16 16:51:51y shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	lst_clever_append(t_list **lst, t_list **cur, int num)
+static void	lst_clever_append(t_list **lst, t_list **cur, int num)
 {
 	if (*lst == NULL)
 	{
@@ -26,7 +26,7 @@ void	lst_clever_append(t_list **lst, t_list **cur, int num)
 	}
 }
 
-t_list	*ps_inputs(int argc, char **argv)
+static t_list	*input_handler(int argc, char **argv)
 {
 	t_list	*lst;
 	t_list	*cur;
@@ -49,4 +49,44 @@ t_list	*ps_inputs(int argc, char **argv)
 	if (!lst)
 		error_and_exit();
 	return (lst);
+}
+
+static int	check_n_count(t_stacks *stacks)
+{
+	int		counter;
+	t_list	*tmp;
+	t_list	*checking;
+
+	checking = stacks->a;
+	counter = 0;
+	while (checking)
+	{
+		if (checking->next)
+		{
+			checking = checking->next;
+			tmp = stacks->a;
+			while (tmp != checking)
+			{
+				if (tmp->data == checking->data)
+					exitter(stacks, 1);
+				tmp = tmp->next;
+			}
+		}
+		else
+			checking = NULL;
+		counter++;
+	}
+	return (counter);
+}
+
+t_stacks	*init_and_input(int argc, char **argv)
+{
+	t_stacks	*stacks;
+
+	stacks = (t_stacks *) malloc(sizeof(t_stacks));
+	stacks->b = NULL;
+	stacks->a = input_handler(argc, argv);
+	stacks->a_len = check_n_count(stacks);
+	stacks->b_len = 0;
+	return (stacks);
 }

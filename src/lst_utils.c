@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:39:15 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/15 22:14:14 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/16 16:27:02 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,51 +75,18 @@ char	lst_is_sorted(t_list *lst)
 	return (1);
 }
 
-int		ft_lst_pop_first(t_list **lst)
+int	ft_lst_size(t_list *lst)
 {
-	t_list *new_first;
-	int		old_data;
+	int	counter;
 
-	if (*lst == NULL)
-		return 0;
-	old_data = (*lst)->data;
-	if ((*lst)->next == NULL)
+	counter = 0;
+	while (lst)
 	{
-		free(*lst);
-		*lst = NULL;
-		return (old_data);
+		counter++;
+		if (lst->next)
+			lst = lst->next;
+		else
+			lst = NULL;
 	}
-	new_first = (*lst)->next;
-	free(*lst);
-	*lst = new_first;
-	return (old_data);
-}
-
-void	ft_lst_add_back(t_list **lst, int num)
-{
-	t_list	*tmp;
-
-	if (*lst == NULL)
-	{
-		*lst = ft_lstnew(num);
-		return ;
-	}
-	tmp = *lst;
-	while ((tmp)->next)
-		(tmp) = (tmp)->next;
-	(tmp)->next = ft_lstnew(num);
-}
-
-void	ft_lst_add_front(t_list **lst, int num)
-{
-	t_list	*tmp;
-
-	if (*lst == NULL)
-	{
-		*lst = ft_lstnew(num);
-		return ;
-	}
-	tmp = ft_lstnew(num);
-	tmp->next = *lst;
-	*lst = tmp;
+	return (counter);
 }

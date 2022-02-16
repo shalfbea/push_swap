@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:57:47 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/15 22:02:39 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:27:14 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,14 @@ void	error_and_exit(void)
 	exit(0);
 }
 
-void	heaps_print(t_list *a, t_list *b)
+void	heaps_print(t_stacks *stacks)
 {
-	int	a_len;
+	int		a_len;
+	t_list	*a;
+	t_list	*b;
 
+	a = stacks->a;
+	b = stacks->b;
 	ft_putstr("============\n");
 	while (a || b)
 	{
@@ -107,5 +111,9 @@ void	heaps_print(t_list *a, t_list *b)
 		}
 		ft_putstr("\n");
 	}
+	a_len = ft_putnbr(stacks->a_len);
+	while(++a_len < 11)
+		ft_putstr(" ");
+	ft_putnbr(b->data);
 	ft_putstr("============\n");
 }
