@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:16:19 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/16 17:20:47 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/21 18:57:32 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 typedef struct s_list
 {
 	int				data;
+	int				score_b;
+	int				score_a;
 	struct s_list	*next;
 }	t_list;
 
@@ -32,6 +34,7 @@ typedef struct s_stacks
 	long long	b_len;
 	int			min;
 	int			max;
+	int			median;
 }	t_stacks;
 
 //input_handler.c
@@ -58,7 +61,7 @@ void	ft_lst_add_front(t_list **lst, int num);
 int		ft_lst_pop_last(t_list **lst);
 //ft_atoi_modded.c
 int		ft_atoi_mod(const char *str, int *i);
-
+int		ft_last_data(t_list *a);
 //operations_swap_push.c
 
 void	op_sa(t_stacks *stacks, char mode);
@@ -75,4 +78,9 @@ void	op_rr(t_stacks *stacks, char mode);
 void	op_rra(t_stacks *stacks, char mode);
 void	op_rrb(t_stacks *stacks, char mode);
 void	op_rrr(t_stacks *stacks, char mode);
+
+//sorting.c
+void	finding_special_values(t_stacks *stacks);
+void	first_push_to_b(t_stacks *stacks);
+void	score_marking(t_stacks *stacks);
 #endif

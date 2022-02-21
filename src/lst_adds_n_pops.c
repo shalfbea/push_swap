@@ -6,19 +6,19 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 16:26:39 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/16 16:27:29 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/21 20:58:10 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_lst_pop_first(t_list **lst)
+int	ft_lst_pop_first(t_list **lst)
 {
-	t_list *new_first;
+	t_list	*new_first;
 	int		old_data;
 
 	if (*lst == NULL)
-		return 0;
+		return (0);
 	old_data = (*lst)->data;
 	if ((*lst)->next == NULL)
 	{
@@ -32,10 +32,10 @@ int		ft_lst_pop_first(t_list **lst)
 	return (old_data);
 }
 
-int		ft_lst_pop_last(t_list **lst)
+int	ft_lst_pop_last(t_list **lst)
 {
 	int		old_data;
-	t_list 	*cur;
+	t_list	*cur;
 
 	if (lst == NULL)
 		return (0);
@@ -82,4 +82,11 @@ void	ft_lst_add_front(t_list **lst, int num)
 	tmp = ft_lstnew(num);
 	tmp->next = *lst;
 	*lst = tmp;
+}
+
+int	ft_last_data(t_list *a)
+{
+	while (a->next)
+		a = a->next;
+	return (a->data);
 }

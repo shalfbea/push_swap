@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 18:41:17 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/16 16:44:06 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/21 15:42:45 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	op_pb(t_stacks *stacks, char mode)
 	int		tmp;
 
 	if (mode)
-		ft_putstr("pa\n");
+		ft_putstr("pb\n");
 	if (stacks->a != NULL)
 	{
 		tmp = ft_lst_pop_first(&(stacks->a));
