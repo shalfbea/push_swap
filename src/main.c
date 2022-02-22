@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:19:02 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/21 20:59:53 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:04:04 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	main(int argc, char **argv)
 		ft_putstr("it's sorted\n");
 	else
 		ft_putstr("it's NOT sorted\n");
-	finding_special_values(stacks);
 	printf("min: %d max : %d median: %d", stacks->min, stacks->max, stacks->median);
 	first_push_to_b(stacks);
 	score_marking(stacks);

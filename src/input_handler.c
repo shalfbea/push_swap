@@ -35,8 +35,6 @@ static t_list	*input_handler(int argc, char **argv)
 
 	lst = NULL;
 	cur = NULL;
-	if (argc < 1)
-		error_and_exit();
 	arg = 0;
 	while (++arg < argc)
 	{
@@ -44,7 +42,11 @@ static t_list	*input_handler(int argc, char **argv)
 			error_and_exit();
 		i = 0;
 		while (argv[arg][i])
+		{
 			lst_clever_append(&lst, &cur, ft_atoi_mod(argv[arg], &i));
+			while (ft_isspace(argv[arg][i]))
+				++i;
+		}
 	}
 	if (!lst)
 		error_and_exit();
@@ -83,10 +85,13 @@ t_stacks	*init_and_input(int argc, char **argv)
 {
 	t_stacks	*stacks;
 
+	if (argc < 1)
+		error_and_exit();
 	stacks = (t_stacks *) malloc(sizeof(t_stacks));
 	stacks->b = NULL;
 	stacks->a = input_handler(argc, argv);
 	stacks->a_len = check_n_count(stacks);
 	stacks->b_len = 0;
+	finding_special_values(stacks);
 	return (stacks);
 }

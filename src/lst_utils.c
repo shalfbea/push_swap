@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:39:15 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/21 19:18:44 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/22 20:34:33 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_list	*ft_lstnew(int num)
 	list->data = num;
 	list->score_b = 0;
 	list->score_a = 0;
+	list->resulting_score = 0; //to delete
 	list->next = NULL;
 	return (list);
 }

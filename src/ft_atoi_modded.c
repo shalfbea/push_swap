@@ -6,13 +6,13 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:13:29 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/15 18:14:07 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:46:48 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_isspace(char c)
+int	ft_isspace(char c)
 {
 	if (c == ' ' || c == '\f' || c == '\r')
 		return (1);
@@ -39,7 +39,7 @@ static int	ft_atoi_helper(const char *str, int *sign, int *i)
 	}
 	else if (str[*i] == '+')
 		++(*i);
-	if (!ft_isdigit(str[*i]))
+	if ((!ft_isdigit(str[*i])) && (!ft_isspace(str[*i])))
 		error_and_exit();
 	return (*i);
 }

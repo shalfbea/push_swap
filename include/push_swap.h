@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:16:19 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/21 18:57:32 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/22 20:43:10 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_list
 	int				data;
 	int				score_b;
 	int				score_a;
+	int				resulting_score;
 	struct s_list	*next;
 }	t_list;
 
@@ -59,9 +60,12 @@ int		ft_lst_pop_first(t_list **lst);
 void	ft_lst_add_back(t_list **lst, int num);
 void	ft_lst_add_front(t_list **lst, int num);
 int		ft_lst_pop_last(t_list **lst);
+void	ft_lst_push_back(t_list **lst, int num);
+
 //ft_atoi_modded.c
 int		ft_atoi_mod(const char *str, int *i);
 int		ft_last_data(t_list *a);
+int		ft_isspace(char c);
 //operations_swap_push.c
 
 void	op_sa(t_stacks *stacks, char mode);
@@ -80,7 +84,15 @@ void	op_rrb(t_stacks *stacks, char mode);
 void	op_rrr(t_stacks *stacks, char mode);
 
 //sorting.c
-void	finding_special_values(t_stacks *stacks);
-void	first_push_to_b(t_stacks *stacks);
+
+//score_marking.c
 void	score_marking(t_stacks *stacks);
+//presorting.c
+void	finding_special_values(t_stacks *stacks);
+int		median_find(t_stacks *stacks);
+void	first_push_to_b(t_stacks *stacks);
+
+//num_utils.c
+int	ft_abs(int x);
+int	ft_max2(int a, int b);
 #endif
