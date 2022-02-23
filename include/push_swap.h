@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:16:19 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/22 20:43:10 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/23 18:06:40 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ typedef struct s_stacks
 	int			max;
 	int			median;
 }	t_stacks;
+
+typedef struct s_op_num
+{
+	int		a;
+	int		b;
+}	t_op_num;
 
 //input_handler.c
 t_stacks	*init_and_input(int argc, char **argv);
@@ -84,9 +90,13 @@ void	op_rrb(t_stacks *stacks, char mode);
 void	op_rrr(t_stacks *stacks, char mode);
 
 //sorting.c
-
+void	sorting(t_stacks *stacks);
 //score_marking.c
 void	score_marking(t_stacks *stacks);
+t_op_num	element_to_move(t_stacks *stacks);
+//resulting_score
+int	resulting_score(t_stacks *stacks, t_list *b);
+
 //presorting.c
 void	finding_special_values(t_stacks *stacks);
 int		median_find(t_stacks *stacks);

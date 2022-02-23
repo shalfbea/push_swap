@@ -11,7 +11,8 @@ PUSH_SWAP := push_swap
 SRC_PUSH_SWAP = main.c input_handler.c output_utils.c \
 				lst_utils.c lst_adds_n_pops.c ft_atoi_modded.c \
 				operations_swap_push.c operations_rotating.c operations_reverse_rotating.c \
-				sorting.c presorting.c score_marking.c
+				sorting.c presorting.c score_marking.c num_utils.c resulting_score.c \
+				small_sort.c
 
 OBJ_DIR = ./obj/
 SRC_DIR = ./src/

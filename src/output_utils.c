@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:57:47 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/22 20:36:32 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/23 15:32:58 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	heaps_print(t_stacks *stacks)
 	t_list	*b;
 
 	if (DEBUG_OUTPUT)
-		score_marking(stacks);
+		element_to_move(stacks);
 	a = stacks->a;
 	b = stacks->b;
 	ft_putstr("============\n");

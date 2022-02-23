@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 17:32:06 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/22 20:25:46 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/23 17:11:05 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,24 @@ int	median_find(t_stacks *stacks)
 		a = a->next;
 	}
 	bubble_sort(new_head);
-	ft_putstr("\n Sorted_tmp_list : ");
+	if (DEBUG_OUTPUT)
+		ft_putstr("\n Sorted_tmp_list : ");
 	counter = 0;
 	new_cur = new_head;
 	while (new_cur)
 	{
-		ft_putnbr(new_cur->data);
-		ft_putstr(" ");
+		if (DEBUG_OUTPUT)
+		{
+			ft_putnbr(new_cur->data);
+			ft_putstr(" ");
+		}
 		if (counter == stacks->a_len / 2)
 			stacks->median = new_cur->data;
 		counter++;
 		new_cur = new_cur->next;
 	}
-	ft_putstr("\n");
+	if (DEBUG_OUTPUT)
+		ft_putstr("\n");
 	ft_lstclear(&new_head);
 	return (0);//fix
 }
