@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 17:32:06 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/23 17:11:05 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/23 18:17:17 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,14 @@ void	first_push_to_b(t_stacks *stacks)
 	while (1)
 	{
 		//to_delete
-		if (stacks->a->data != stacks->min && stacks->a->data != stacks->max)
+		if (stacks->a->data != stacks->min && stacks->a->data != stacks->max)// && stacks->a->data != stacks->median)
 		{
 			// Think about finding presort optimization here
 			op_pb(stacks, 1);
 			if (stacks->a->data > stacks->median)
 				op_rb(stacks, 1);
 		}
-		else if (counter < 2)
+		else if (counter < 2) //3
 		{
 			//Think about optimization, when these 2 nums are near
 			op_ra(stacks, 1);
