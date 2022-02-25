@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 14:28:26 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/23 15:55:45 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 17:14:41 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	resulting_score(t_stacks *stacks, t_list *b)
 		min = ft_max2(ft_abs(b->score_a), ft_abs(b->score_b));
 	else
 	{
-		if (b->score_b < 0)
+		if (b->score_b <= 0) //was <
 		{
 			if (ft_max2(stacks->b_len + b->score_b, b->score_a) < min)
 			{

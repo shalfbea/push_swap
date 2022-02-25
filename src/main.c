@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:19:02 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/25 14:47:06 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 18:44:43 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,18 @@ int	main(int argc, char **argv)
 	stacks = init_and_input(argc, argv);
 	if (!stacks)
 		exitter(stacks, 1);
+	if (lst_is_sorted(stacks->a))
+		exitter(stacks, 0);
+	if (sort_three(stacks))
+		exitter(stacks, 0);
 	finding_special_values(stacks);
+	if (small_sort(stacks))
+		exitter(stacks, 0);
 	if (DEBUG_OUTPUT)
 	{
 		heaps_print(stacks);
 		printf("min: %d max : %d median: %d", stacks->min, stacks->max, stacks->median);
 	}
-	if (lst_is_sorted(stacks->a))
-		exitter(stacks, 0);
 	first_push_to_b(stacks);
 	if (DEBUG_OUTPUT)
 	{
@@ -36,6 +40,8 @@ int	main(int argc, char **argv)
 		heaps_print(stacks);
 	}
 	sorting(stacks);
+	if (!lst_is_sorted(stacks->a))
+		ft_putstr("Something's wrong...");
 	exitter(stacks, 0);
 	return (0);
 }

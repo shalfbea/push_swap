@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:53:13 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/23 17:07:01 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 17:21:38 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	turning_back(t_stacks *stacks)
 
 	counter = 0;
 	a = stacks->a;
-
+	if (DEBUG_OUTPUT)
+		ft_putstr("=>Turning back\n");
 	while (a)
 	{
 		if (a->data == stacks->min)
@@ -63,6 +64,7 @@ void	sorting(t_stacks *stacks)
 
 	while (stacks->b_len > 0)
 	{
+		finding_special_values(stacks);
 		rotates = element_to_move(stacks);
 		move_together(stacks, &rotates);
 		while (rotates.b > 0)

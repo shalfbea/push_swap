@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 17:32:06 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/23 18:17:17 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 17:23:10 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,15 @@ int	median_find(t_stacks *stacks)
 		a = a->next;
 	}
 	bubble_sort(new_head);
-	if (DEBUG_OUTPUT)
-		ft_putstr("\n Sorted_tmp_list : ");
 	counter = 0;
 	new_cur = new_head;
 	while (new_cur)
 	{
-		if (DEBUG_OUTPUT)
-		{
-			ft_putnbr(new_cur->data);
-			ft_putstr(" ");
-		}
 		if (counter == stacks->a_len / 2)
 			stacks->median = new_cur->data;
 		counter++;
 		new_cur = new_cur->next;
 	}
-	if (DEBUG_OUTPUT)
-		ft_putstr("\n");
 	ft_lstclear(&new_head);
 	return (0);//fix
 }
@@ -91,6 +82,13 @@ void	finding_special_values(t_stacks *stacks)
 	}
 }
 
+/*
+static int		last_checker_opt(t_stacks *stacks, int counter)
+{
+	return (0);
+}
+*/
+
 void	first_push_to_b(t_stacks *stacks)
 {
 	int		counter;
@@ -99,14 +97,14 @@ void	first_push_to_b(t_stacks *stacks)
 	while (1)
 	{
 		//to_delete
-		if (stacks->a->data != stacks->min && stacks->a->data != stacks->max)// && stacks->a->data != stacks->median)
+		if (stacks->a->data != stacks->min && stacks->a->data != stacks->max && stacks->a->data != stacks->median)
 		{
 			// Think about finding presort optimization here
 			op_pb(stacks, 1);
-			if (stacks->a->data > stacks->median)
-				op_rb(stacks, 1);
+			//if (stacks->a->data > stacks->median)
+			//	op_rb(stacks, 1);
 		}
-		else if (counter < 2) //3
+		else if (counter < 3)
 		{
 			//Think about optimization, when these 2 nums are near
 			op_ra(stacks, 1);
@@ -115,4 +113,5 @@ void	first_push_to_b(t_stacks *stacks)
 		else
 			break ;
 	}
+	sort_three(stacks);
 }

@@ -304,6 +304,7 @@ then
 if [ $res -gt 12 ]
 then
 echo "Test result on $from..$to randoms: \033[36m$res\033[m    ❌"
+echo $ARG
 else
 echo "Test result on $from..$to randoms: \033[36m$res\033[m    ✅"
 fi

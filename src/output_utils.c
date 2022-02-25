@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:57:47 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/23 15:32:58 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 17:58:51 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	heaps_print(t_stacks *stacks)
 	t_list	*a;
 	t_list	*b;
 
-	if (DEBUG_OUTPUT)
+	if (DEBUG_OUTPUT && SHOW_ME)
 		element_to_move(stacks);
 	a = stacks->a;
 	b = stacks->b;
@@ -106,18 +106,21 @@ void	heaps_print(t_stacks *stacks)
 			a_len = 0;
 		if (b)
 		{
-			while(++a_len < 11)
+			while (++a_len < 11)
 				ft_putstr(" ");
 			a_len = ft_putnbr(b->data);
-			while(++a_len < 11)
-				ft_putstr(" ");
-			a_len = ft_putnbr(b->score_b);
-			while(++a_len < 5)
-				ft_putstr(" ");
-			a_len = ft_putnbr(b->score_a);
-			while(++a_len < 5)
-				ft_putstr(" ");
-			ft_putnbr(b->resulting_score);
+			if (SHOW_ME)
+			{
+				while (++a_len < 11)
+					ft_putstr(" ");
+				a_len = ft_putnbr(b->score_b);
+				while (++a_len < 5)
+					ft_putstr(" ");
+				a_len = ft_putnbr(b->score_a);
+				while (++a_len < 5)
+					ft_putstr(" ");
+				ft_putnbr(b->resulting_score);
+			}
 			b = b->next;
 		}
 		ft_putstr("\n");

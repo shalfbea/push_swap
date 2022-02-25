@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:16:19 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/25 16:13:59 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 19:41:54 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define DEBUG_OUTPUT 0
+# define DEBUG_OUTPUT 1
+# define SHOW_ME 0
 
 typedef struct s_list
 {
@@ -92,7 +93,11 @@ void	op_rrr(t_stacks *stacks, char mode);
 
 //sorting.c
 void	sorting(t_stacks *stacks);
+//small_sort.c
+int	sort_three(t_stacks *stack);
+int	small_sort(t_stacks *stacks);
 //score_marking.c
+int	a_score(t_stacks * stack, int num);
 void	score_marking(t_stacks *stacks);
 t_op_num	element_to_move(t_stacks *stacks);
 //resulting_score

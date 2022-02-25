@@ -6,13 +6,13 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:08:16 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/25 14:41:27 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 17:45:28 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	a_score(t_stacks * stack, int num)
+int	a_score(t_stacks * stack, int num)
 {
 	int	start;
 	int	counter;
