@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:13:29 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/22 18:46:48 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 16:15:16 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	ft_atoi_helper(const char *str, int *sign, int *i)
 	return (*i);
 }
 
-int	ft_atoi_mod(const char *str, int *i)
+int	ft_atoi_mod(const char *str, int *i, t_stacks *stacks)
 {
 	size_t	res;
 	int		sign;
@@ -57,9 +57,9 @@ int	ft_atoi_mod(const char *str, int *i)
 		res = (res * 10) + str[*i] - '0';
 		++(*i);
 		if ((sign > 0) && (res > 2147483647))
-			return (-1);
+			exitter(stacks, 1);
 		if ((sign < 0) && (res > 2147483648))
-			return (0);
+			exitter(stacks, 1);
 	}
 	return ((int) res * sign);
 }

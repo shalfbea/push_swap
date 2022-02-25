@@ -6,23 +6,11 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:19:02 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/23 17:22:46 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 14:47:06 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	exitter(t_stacks *stacks, char mode)
-{
-	if (mode)
-		//ft_putstr("Error!");
-		write(2, "Error!", 6);
-	ft_lstclear(&(stacks->a));
-	ft_lstclear(&(stacks->b));
-	if (stacks != NULL)
-		free(stacks);
-	exit(0);
-}
 
 #include <stdio.h>
 
@@ -33,6 +21,7 @@ int	main(int argc, char **argv)
 	stacks = init_and_input(argc, argv);
 	if (!stacks)
 		exitter(stacks, 1);
+	finding_special_values(stacks);
 	if (DEBUG_OUTPUT)
 	{
 		heaps_print(stacks);

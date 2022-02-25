@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:39:15 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/22 20:34:33 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 16:09:35 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,18 @@ int	ft_lst_size(t_list *lst)
 			lst = NULL;
 	}
 	return (counter);
+}
+
+void	exitter(t_stacks *stacks, char mode)
+{
+	if (mode)
+		//ft_putstr("Error!");
+		write(2, "Error!", 6);
+	ft_lstclear(&(stacks->a));
+	ft_lstclear(&(stacks->b));
+	if(stacks->str)
+		free(stacks->str);
+	if (stacks != NULL)
+		free(stacks);
+	exit(0);
 }

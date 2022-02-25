@@ -12,10 +12,14 @@ PUSH_SWAP := push_swap
 SRC_PUSH_SWAP = main.c input_handler.c output_utils.c \
 				lst_utils.c lst_adds_n_pops.c ft_atoi_modded.c \
 				operations_swap_push.c operations_rotating.c operations_reverse_rotating.c \
-				sorting.c presorting.c score_marking.c num_utils.c resulting_score.c \
+				sorting.c presorting.c score_marking.c utils.c resulting_score.c \
 				small_sort.c
 
-SRC_CHECKER = checker.c
+SRC_CHECKER = checker.c input_handler.c output_utils.c \
+				lst_utils.c lst_adds_n_pops.c ft_atoi_modded.c \
+				operations_swap_push.c operations_rotating.c operations_reverse_rotating.c \
+				sorting.c presorting.c score_marking.c utils.c resulting_score.c \
+				small_sort.c
 
 OBJ_DIR = ./obj/
 SRC_DIR = ./src/
@@ -41,9 +45,9 @@ $(PUSH_SWAP): $(HEADER) $(OBJ_PUSH_SWAP)
 $(LIBFT) :
 	make -C ./libft
 
-bonus : $(all) $(CHECKER)
+bonus : $(all) $(OBJ_DIR) $(CHECKER)
 
-$(CHECKER) : $(HEADER) $(OBJ_CHECKER)
+$(CHECKER) : $(HEADER) $(OBJ_DIR) $(OBJ_CHECKER)
 	$(CC) $(OBJ_CHECKER) -o $(CHECKER)
 
 #%.o: %.c $(HEADER)
@@ -58,6 +62,7 @@ clean:
 
 fclean: clean
 	$(RM) $(PUSH_SWAP)
+	$(RM) $(CHECKER)
 #ALSO NEED TO CLEAN libft
 re: fclean all
 

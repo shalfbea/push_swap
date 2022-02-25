@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:08:16 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/23 15:58:59 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 14:41:27 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,9 @@ t_op_num	element_to_move(t_stacks *stacks)
 	score_marking(stacks);
 	b = stacks->b;
 	if (b == NULL)
-		return result;
+		return (result);
 	minimum_operations = abs(b->score_a) + abs(b->score_a);
 	found = b;
-	//score_marking(stacks);
 	while (b)
 	{
 		b->resulting_score = resulting_score(stacks, b);
@@ -88,6 +87,5 @@ t_op_num	element_to_move(t_stacks *stacks)
 	}
 	result.a = found->score_a;
 	result.b = found->score_b;
-
 	return (result);
 }

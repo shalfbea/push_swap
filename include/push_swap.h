@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:16:19 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/23 18:06:40 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/02/25 16:13:59 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define DEBUG_OUTPUT 1
+# define DEBUG_OUTPUT 0
 
 typedef struct s_list
 {
@@ -36,6 +36,7 @@ typedef struct s_stacks
 	int			min;
 	int			max;
 	int			median;
+	char		*str;
 }	t_stacks;
 
 typedef struct s_op_num
@@ -47,7 +48,6 @@ typedef struct s_op_num
 //input_handler.c
 t_stacks	*init_and_input(int argc, char **argv);
 //main.c
-void	exitter(t_stacks *stacks, char mode);
 
 //output_utils.c
 int		ft_putnbr(int n);
@@ -60,6 +60,7 @@ t_list	*ft_lstnew(int num);
 void	ft_lstclear(t_list **lst);
 char	lst_is_sorted(t_list *lst);
 int		ft_lst_size(t_list *lst);
+void	exitter(t_stacks *stacks, char mode);
 
 //lst_adds_n_pops.c
 int		ft_lst_pop_first(t_list **lst);
@@ -69,7 +70,7 @@ int		ft_lst_pop_last(t_list **lst);
 void	ft_lst_push_back(t_list **lst, int num);
 
 //ft_atoi_modded.c
-int		ft_atoi_mod(const char *str, int *i);
+int		ft_atoi_mod(const char *str, int *i, t_stacks *stacks);
 int		ft_last_data(t_list *a);
 int		ft_isspace(char c);
 //operations_swap_push.c
@@ -102,7 +103,8 @@ void	finding_special_values(t_stacks *stacks);
 int		median_find(t_stacks *stacks);
 void	first_push_to_b(t_stacks *stacks);
 
-//num_utils.c
+//utils.c
 int	ft_abs(int x);
 int	ft_max2(int a, int b);
+int	ft_str_simple_cmp(const char *s1, const char *s2);
 #endif
