@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 13:53:28 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/25 16:28:34 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/03 16:32:19 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,11 @@ int	main(int argc, char **argv)
 	stacks = init_and_input(argc, argv);
 	if (!stacks)
 		exitter(stacks, 1);
-	heaps_print(stacks);
+	if (DEBUG_OUTPUT)
+		heaps_print(stacks);
 	checking(stacks);
-	heaps_print(stacks);
+	if (DEBUG_OUTPUT)
+		heaps_print(stacks);
 	if (lst_is_sorted(stacks->a) && stacks->b == NULL)
 		ft_putstr("OK\n");
 	else

@@ -5,21 +5,24 @@ CC := clang
 
 TestingFlags := -fsanitize=address
 
-FLAGS := -Wall -Wextra -Werror -I./include -g3
+FLAGS := -Wall -Wextra -Werror -I./include -g3 -ggdb3
 
 PUSH_SWAP := push_swap
 
-SRC_PUSH_SWAP = main.c input_handler.c output_utils.c \
-				lst_utils.c lst_adds_n_pops.c ft_atoi_modded.c \
-				operations_swap_push.c operations_rotating.c operations_reverse_rotating.c \
-				sorting.c presorting.c score_marking.c utils.c resulting_score.c \
-				small_sort.c
+SRC_PUSH_SWAP = main.c  \
+				subsequence_opt/subsequence.c \
+				utils/input_handler.c utils/output_utils.c utils/debug_output.c\
+				utils/lst_utils.c utils/lst_adds_n_pops.c utils/ft_atoi_modded.c utils/utils.c \
+				operations/swap_push.c operations/rotating.c operations/reverse_rotating.c \
+				sorting/sorting.c sorting/presorting.c sorting/score_marking.c  sorting/resulting_score.c \
+				sorting/small_sort.c
 
-SRC_CHECKER = checker.c input_handler.c output_utils.c \
-				lst_utils.c lst_adds_n_pops.c ft_atoi_modded.c \
-				operations_swap_push.c operations_rotating.c operations_reverse_rotating.c \
-				sorting.c presorting.c score_marking.c utils.c resulting_score.c \
-				small_sort.c
+SRC_CHECKER =   checker.c\
+				utils/input_handler.c utils/output_utils.c utils/debug_output.c \
+				utils/lst_utils.c utils/lst_adds_n_pops.c utils/ft_atoi_modded.c utils/utils.c \
+				operations/swap_push.c operations/rotating.c operations/reverse_rotating.c \
+				sorting/sorting.c sorting/presorting.c sorting/score_marking.c  sorting/resulting_score.c \
+				sorting/small_sort.c
 
 OBJ_DIR = ./obj/
 SRC_DIR = ./src/
@@ -56,6 +59,11 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(HEADER)
 
 $(OBJ_DIR) :
 	mkdir obj
+	mkdir obj/utils
+	mkdir obj/operations
+	mkdir obj/sorting
+	mkdir obj/subsequence_opt
+
 
 clean:
 	$(RM) $(OBJ_DIR)

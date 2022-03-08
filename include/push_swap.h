@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:16:19 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/25 19:41:54 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/08 19:04:33 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define DEBUG_OUTPUT 1
-# define SHOW_ME 0
+# define DEBUG_OUTPUT 0
+# define SHOW_ME 1
 
 typedef struct s_list
 {
@@ -37,6 +37,8 @@ typedef struct s_stacks
 	int			min;
 	int			max;
 	int			median;
+	int			*seq;
+	int			seq_size;
 	char		*str;
 }	t_stacks;
 
@@ -44,6 +46,8 @@ typedef struct s_op_num
 {
 	int		a;
 	int		b;
+	int		num_to_pass;
+	int		insum;
 }	t_op_num;
 
 //input_handler.c
@@ -85,6 +89,8 @@ void	op_pb(t_stacks *stacks, char mode);
 void	op_ra(t_stacks *stacks, char mode);
 void	op_rb(t_stacks *stacks, char mode);
 void	op_rr(t_stacks *stacks, char mode);
+void	ra_doer(t_stacks *stacks, int counter);
+void	rb_doer(t_stacks *stacks, int counter);
 //operations_reverse_rotating.c
 
 void	op_rra(t_stacks *stacks, char mode);
@@ -104,12 +110,17 @@ t_op_num	element_to_move(t_stacks *stacks);
 int	resulting_score(t_stacks *stacks, t_list *b);
 
 //presorting.c
-void	finding_special_values(t_stacks *stacks);
-int		median_find(t_stacks *stacks);
+void	finding_special_values(t_stacks *stacks, int median_needs);
+void	median_find(t_stacks *stacks);
 void	first_push_to_b(t_stacks *stacks);
-
+void	push_to_b_seq(t_stacks *stacks);
 //utils.c
 int	ft_abs(int x);
 int	ft_max2(int a, int b);
 int	ft_str_simple_cmp(const char *s1, const char *s2);
+
+void	bubble_sort(t_list *i);
+
+//subsequence_opt
+int	subseq_find(t_stacks *stacks);
 #endif
