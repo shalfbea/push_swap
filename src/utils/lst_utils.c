@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:39:15 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/08 21:49:58 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:41:47 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,11 @@ int	ft_lst_size(t_list *lst)
 void	exitter(t_stacks *stacks, char mode)
 {
 	if (mode)
-		write(2, "Error!", 6);
+		write(2, "Error\n", 6);
 	ft_lstclear(&(stacks->a));
 	ft_lstclear(&(stacks->b));
 	if (stacks->str)
 		free(stacks->str);
-	if (stacks->seq)
-		free(stacks->seq);
 	if (stacks != NULL)
 		free(stacks);
 	exit(0);

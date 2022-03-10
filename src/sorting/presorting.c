@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 17:32:06 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/09 20:50:10 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:21:13 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,3 @@ void	finding_special_values(t_stacks *stacks, int median_needs)
 		a = a->next;
 	}
 }
-

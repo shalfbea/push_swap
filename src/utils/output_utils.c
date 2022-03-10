@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:57:47 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/08 15:43:38 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:34:07 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,3 @@ int	ft_putnbr(int n)
 	}
 	return (tmp + sign);
 }
-
-void	error_and_exit(void)
-{
-	ft_putstr("Error!");
-	exit(0);
-}
-

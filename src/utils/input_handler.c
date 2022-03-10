@@ -39,7 +39,7 @@ static t_list	*input_handler(int argc, char **argv, t_stacks *stacks)
 	while (++arg < argc)
 	{
 		if (!argv[arg][0])
-			error_and_exit();
+			exitter(stacks, 1);
 		i = 0;
 		while (argv[arg][i])
 		{
@@ -49,7 +49,7 @@ static t_list	*input_handler(int argc, char **argv, t_stacks *stacks)
 		}
 	}
 	if (!lst)
-		error_and_exit();
+		exitter(stacks, 1);
 	return (lst);
 }
 
@@ -85,14 +85,17 @@ t_stacks	*init_and_input(int argc, char **argv)
 {
 	t_stacks	*stacks;
 
-	if (argc < 1)
-		error_and_exit();
+
 	stacks = (t_stacks *) malloc(sizeof(t_stacks));
 	if (!stacks)
 		exit(0);
 	stacks->a = NULL;
 	stacks->b = NULL;
 	stacks->str = NULL;
+	if (argc < 2)
+		exitter(stacks, 0);
+	if (argc == 2 && !argv[1][0])
+		exitter(stacks, 0);
 	stacks->a = input_handler(argc, argv, stacks);
 	stacks->a_len = check_n_count(stacks);
 	stacks->b_len = 0;

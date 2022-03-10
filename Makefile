@@ -10,12 +10,12 @@ FLAGS := -Wall -Wextra -Werror -I./include -g3 -ggdb3
 PUSH_SWAP := push_swap
 
 SRC_PUSH_SWAP = main.c  \
-				subsequence_opt/subsequence.c \
+				subsequence_opt/subsequence.c subsequence_opt/marking_seq.c \
 				utils/input_handler.c utils/output_utils.c utils/debug_output.c\
 				utils/lst_utils.c utils/lst_adds_n_pops.c utils/ft_atoi_modded.c utils/utils.c \
 				operations/swap_push.c operations/rotating.c operations/reverse_rotating.c \
 				sorting/sorting.c sorting/presorting.c sorting/score_marking.c  sorting/resulting_score.c \
-				sorting/small_sort.c
+				sorting/small_sort.c sorting/push_to_b.c \
 
 SRC_CHECKER =   checker.c\
 				utils/input_handler.c utils/output_utils.c utils/debug_output.c \

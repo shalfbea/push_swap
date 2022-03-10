@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:26:29 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/08 21:48:20 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:27:38 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	from_min_to_max(t_stacks *stacks, int **array)
 	while (a)
 	{
 		if (a->data == stacks->min)
-			break;
+			break ;
 		a = a->next;
 	}
 	while (a && !found_max)
@@ -44,13 +44,13 @@ int	from_min_to_max(t_stacks *stacks, int **array)
 	{
 		(*array)[i++] = a->data;
 		if (a->data == stacks->max)
-			break;
+			break ;
 		a = a->next;
 	}
 	return (i);
 }
 
-void prework(int *a, int *prev, int *d, int n)
+void	prework(int *a, int *prev, int *d, int n)
 {
 	int	i;
 	int	j;
@@ -74,14 +74,12 @@ void prework(int *a, int *prev, int *d, int n)
 	}
 }
 
-int	findLIS(int *a, int *prev, int *d, int n)
+int	find_lis(int *d, int n)
 {
 	int	pos;
 	int	len;
 	int	i;
 
-	(void) a;
-	(void) prev;
 	pos = 0;
 	len = d[0];
 	i = 0;
@@ -112,8 +110,8 @@ int	subseq_find(t_stacks *stacks)
 	if (DEBUG_OUTPUT)
 		print_array(array, n);
 	prework(array, prev, d, n);
-	n = findLIS(array, prev, d, n);
-	marking_subseq(stacks, array , prev, n);
+	n = find_lis(d, n);
+	marking_subseq(stacks, array, prev, n);
 	if (array)
 		free(array);
 	if (prev)

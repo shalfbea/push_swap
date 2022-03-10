@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:50:20 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/09 20:51:09 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:20:47 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	first_push_to_b(t_stacks *stacks)
 			op_pb(stacks, 1);
 		else if (counter < 3)
 		{
-			//Think about optimization, when these 2 nums are near
 			op_ra(stacks, 1);
 			counter++;
 		}
@@ -34,11 +33,9 @@ void	first_push_to_b(t_stacks *stacks)
 	sort_three(stacks);
 }
 
-int		*that_seq(t_stacks *stacks, int *marked)
+static void	marked_counter(t_stacks *stacks, int *marked)
 {
 	t_list	*a;
-	int		*res;
-	int		i;
 
 	*marked = 0;
 	a = stacks->a;
@@ -48,7 +45,16 @@ int		*that_seq(t_stacks *stacks, int *marked)
 			(*marked)++;
 		a = a->next;
 	}
-	if (marked < 3)
+}
+
+int	*that_seq(t_stacks *stacks, int *marked)
+{
+	t_list	*a;
+	int		*res;
+	int		i;
+
+	marked_counter(stacks, marked);
+	if (*marked < 3)
 		return (NULL);
 	res = (int *) malloc(sizeof(int) * (*marked));
 	if (!res)
@@ -87,7 +93,10 @@ void	push_to_b_seq(t_stacks *stacks)
 	counter = 0;
 	seq = that_seq(stacks, &marked);
 	if (!seq)
+	{
 		first_push_to_b(stacks);
+		return ;
+	}
 	while (1)
 	{
 		if (!check_in_seq(stacks->a->data, seq, marked))
@@ -100,6 +109,6 @@ void	push_to_b_seq(t_stacks *stacks)
 		else
 			break ;
 	}
-	if (that_seq)
-		free(that_seq);
+	if (seq)
+		free(seq);
 }

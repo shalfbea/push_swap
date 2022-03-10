@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:24:40 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/08 18:29:25 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:59:09 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,30 @@ int	sort_three(t_stacks *stack)
 	top = stack->a->data;
 	mid = stack->a->next->data;
 	bot = stack->a->next->next->data;
-	if(top > mid && mid < bot && bot > top)
+	if (top > mid && mid < bot && bot > top)
 		op_sa(stack, 1);
-	else if(top > mid && mid > bot && bot < top)
+	else if (top > mid && mid > bot && bot < top)
 	{
 		op_sa(stack, 1);
 		op_rra(stack, 1);
 	}
-	else if(top > mid && mid < bot && bot < top)
+	else if (top > mid && mid < bot && bot < top)
 		op_ra(stack, 1);
-	else if(top < mid && mid > bot && bot > top)
+	else if (top < mid && mid > bot && bot > top)
 	{
 		op_sa(stack, 1);
 		op_ra(stack, 1);
 	}
-	else if(top < mid && mid > bot && bot < top)
+	else if (top < mid && mid > bot && bot < top)
 		op_rra(stack, 1);
 	return (1);
 }
-
+/*
 void	ss_path_back(t_stacks *stacks)
 {
-	int	min;
-	int	counter;
-	int	last_counted;
+	int		min;
+	int		counter;
+	int		last_counted;
 	t_list	*a;
 
 	a = stacks->a;
@@ -67,162 +67,80 @@ void	ss_path_back(t_stacks *stacks)
 	if (counter > stacks->a_len / 2)
 		counter = counter - stacks->a_len ;
 	ra_doer(stacks, counter);
-	/*
-	while (counter > 0)
-	{
-		counter--;
-		op_ra(stacks, 1);
-	}
-	while (counter < 0)
-	{
-		counter++;
-		op_rra(stacks, 1);
-	}
-	*/
 }
+*/
 
-void	ss_pusher(t_stacks	*stacks)
+void	ss_pusher(t_stacks *stacks, int mm, int mode)
 {
 	t_list	*a;
 	int		counter;
 
-	counter = 0;
+	if (mode == -1)
+	{
+		counter = a_score(stacks, stacks->b->data);
+		ra_doer(stacks, counter);
+		op_pa(stacks, 1);
+		return ;
+	}
 	a = stacks->a;
-	/*
-	while (a->data < stacks->b->data)// && a->next->data > stacks->b->data)
+	counter = 0;
+	while (a->data != mm)
 	{
 		counter++;
 		a = a->next;
-		if (a->next == NULL)
-			break ;
-	}
-	*/
-	counter = a_score(stacks, stacks->b->data);
-	if (DEBUG_OUTPUT)
-	{
-		ft_putstr("counter : ");
-		ft_putnbr(counter);
-		ft_putstr("\n");
 	}
 	if (counter > stacks->a_len / 2)
 		counter = counter - stacks->a_len ;
-	ra_doer(stacks, counter);
+	ra_doer(stacks, counter + mode);
 	op_pa(stacks, 1);
-	//ra_doer(stacks, counter);
 }
 
-void	min_situation(t_stacks *stacks)
+int	local_min_max(t_stacks *stacks, int mode)
 {
 	t_list	*a;
 	int		min;
-	int		counter;
+	int		max;
 
 	a = stacks->a->next;
 	min = stacks->a->data;
+	max = stacks->a->data;
 	while (a)
 	{
 		if (a->data < min)
 			min = a->data;
-		a = a->next;
-	}
-	a = stacks->a;
-	counter = 0;
-	while (a->data != min)
-	{
-		counter++;
-		a = a->next;
-	}
-	if (counter > stacks->a_len / 2)
-		counter = counter - stacks->a_len ;
-	ra_doer(stacks, counter);
-	op_pa(stacks, 1);
-}
-
-void	max_situation(t_stacks *stacks)
-{
-	t_list	*a;
-	int		max;
-	int		counter;
-
-	a = stacks->a->next;
-	max = stacks->a->data;
-	while (a)
-	{
 		if (a->data > max)
 			max = a->data;
 		a = a->next;
 	}
-	a = stacks->a;
-	counter = 0;
-	while (a->data != max)
-	{
-		counter++;
-		a = a->next;
-	}
-	if (counter > stacks->a_len / 2)
-		counter = counter - stacks->a_len ;
-	ra_doer(stacks, counter + 1);
-	op_pa(stacks, 1);
-}
-
-int	local_max(t_stacks *stacks, int	cur)
-{
-	t_list	*a;
-	int		max;
-
-	a = stacks->a->next;
-	max = stacks->a->data;
-	while (a)
-	{
-		if (a->data > max)
-			max = a->data;
-		a = a->next;
-	}
-	if (cur > max)
+	if (mode)
 		return (max);
-	return (-1);
-}
-
-int	local_min(t_stacks *stacks, int	cur)
-{
-	t_list	*a;
-	int		min;
-
-	a = stacks->a->next;
-	min = stacks->a->data;
-	while (a)
-	{
-		if (a->data < min)
-			min = a->data;
-		a = a->next;
-	}
-	if (cur < min)
-		return (min);
-	return (-1);
+	return (min);
 }
 
 int	small_sort(t_stacks *stacks)
 {
+	int	tmp;
+
 	if (stacks->a_len > 5)
 		return (0);
 	while (stacks->a_len > 3)
 		op_pb(stacks, 1);
 	sort_three(stacks);
-	if (DEBUG_OUTPUT)
-		ft_putstr("small sorting alg\n");
 	while (stacks->b_len > 0)
 	{
-		if (local_min(stacks, stacks->b->data) != -1)
-		//if (stacks->b->data == stacks->min)
-			min_situation(stacks);
-		//else if (stacks->b->data == stacks->max)
-		else if (local_max(stacks, stacks->b->data) != -1)
-			max_situation(stacks);
+		tmp = local_min_max(stacks, 0);
+		if (stacks->b->data < tmp)
+			ss_pusher(stacks, tmp, 0);
 		else
-			ss_pusher(stacks);
-		if (DEBUG_OUTPUT)
-			ft_putstr("next elem\n");
+		{
+			tmp = local_min_max(stacks, 1);
+			if (stacks->b->data > tmp)
+				ss_pusher(stacks, tmp, 1);
+			else
+				ss_pusher(stacks, tmp, -1);
+		}
+
 	}
-	ss_path_back(stacks);
+	turning_back(stacks);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:16:19 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/08 19:28:18 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:39:02 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_stacks
 	int			min;
 	int			max;
 	int			median;
-	int			*seq;
 	int			seq_size;
 	char		*str;
 }	t_stacks;
@@ -46,8 +45,6 @@ typedef struct s_op_num
 {
 	int		a;
 	int		b;
-	int		num_to_pass;
-	int		insum;
 }	t_op_num;
 
 //input_handler.c
@@ -58,7 +55,9 @@ t_stacks	*init_and_input(int argc, char **argv);
 int		ft_putnbr(int n);
 int		ft_putstr(char *s);
 void	error_and_exit(void);
+//debug output.c
 void	heaps_print(t_stacks *stacks);
+void	print_array(int	*array, int n);
 
 //lst_utils.c
 t_list	*ft_lstnew(int num);
@@ -98,6 +97,7 @@ void	op_rrb(t_stacks *stacks, char mode);
 void	op_rrr(t_stacks *stacks, char mode);
 
 //sorting.c
+void	turning_back(t_stacks *stacks);
 void	sorting(t_stacks *stacks);
 //small_sort.c
 int	sort_three(t_stacks *stack);
