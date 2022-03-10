@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:26:29 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/08 19:07:19 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:48:20 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,39 +74,6 @@ void prework(int *a, int *prev, int *d, int n)
 	}
 }
 
-void	mark_stack(t_stacks *stacks, int data)
-{
-	t_list	*a;
-
-	a = stacks->a;
-	while(a)
-	{
-		if (a->data == data)
-		{
-			a->score_a = 1;
-			break;
-		}
-		a = a->next;
-	}
-}
-
-void	view_marked(t_stacks *stacks)
-{
-	t_list	*a;
-
-	a = stacks->a;
-	while(a)
-	{
-		if (a->score_a)
-		{
-			ft_putnbr(a->data);
-			ft_putstr(" ");
-		}
-		a = a->next;
-	}
-	ft_putstr("\n");
-}
-
 int	findLIS(int *a, int *prev, int *d, int n)
 {
 	int	pos;
@@ -130,15 +97,6 @@ int	findLIS(int *a, int *prev, int *d, int n)
 	return (pos);
 }
 
-void	marking_subseq(t_stacks *stacks, int *a, int *prev, int pos)
-{
-	while (pos != -1)
-	{
-		mark_stack(stacks, a[pos]);
-		pos = prev[pos];
-	}
-}
-
 int	subseq_find(t_stacks *stacks)
 {
 	int	*array;
@@ -156,10 +114,11 @@ int	subseq_find(t_stacks *stacks)
 	prework(array, prev, d, n);
 	n = findLIS(array, prev, d, n);
 	marking_subseq(stacks, array , prev, n);
-	if (DEBUG_OUTPUT)
-		view_marked(stacks);
-	free(array);
-	free(prev);
-	free(d);
+	if (array)
+		free(array);
+	if (prev)
+		free(prev);
+	if (d)
+		free(d);
 	return (1);
 }

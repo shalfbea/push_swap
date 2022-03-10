@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:16:19 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/08 19:04:33 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/08 19:28:18 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ int	ft_str_simple_cmp(const char *s1, const char *s2);
 
 void	bubble_sort(t_list *i);
 
+//marking_seq.c
+void	marking_subseq(t_stacks *stacks, int *a, int *prev, int pos);
 //subsequence_opt
 int	subseq_find(t_stacks *stacks);
 #endif

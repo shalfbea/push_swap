@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 16:26:39 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/08 15:37:05 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:49:46 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	ft_lst_pop_last(t_list **lst)
 	while (cur->next->next)
 		cur = cur->next;
 	old_data = cur->next->data;
-	free(cur->next);
+	if (cur->next)
+		free(cur->next);
 	cur->next = NULL;
 	return (old_data);
 }

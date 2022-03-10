@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:19:02 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/08 19:03:59 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/09 20:43:19 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_list	*lst_copy(t_list *a)
 	return (head);
 }
 
-int		new_value(t_list *sorted, int num)
+int	new_value(t_list *sorted, int num)
 {
 	while (sorted)
 	{
@@ -56,7 +56,7 @@ void	renummer(t_stacks *stacks)
 	sorted_head = lst_copy(a);
 	bubble_sort(sorted_head);
 	sorted = sorted_head;
-	while(sorted)
+	while (sorted)
 	{
 		sorted->score_a = counter;
 		counter++;
@@ -88,20 +88,13 @@ int	main(int argc, char **argv)
 	if (small_sort(stacks))
 		exitter(stacks, 0);
 	if (DEBUG_OUTPUT)
-	{
 		heaps_print(stacks);
-		printf("min: %d max : %d median: %d\n", stacks->min, stacks->max, stacks->median);
-	}
 	if (subseq_find(stacks))
 		push_to_b_seq(stacks);
 	else
 		first_push_to_b(stacks);
 	if (DEBUG_OUTPUT)
-	{
 		ft_putstr("\n=> ENDED PUSH TO B\n");
-		heaps_print(stacks);
-	}
-	//exitter(stacks, 0);
 	sorting(stacks);
 	if (!lst_is_sorted(stacks->a))
 		ft_putstr("Something's wrong...\n");

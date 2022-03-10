@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:39:15 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/08 18:36:46 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/08 21:49:58 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	ft_lstclear(t_list **lst)
 			next_elem = cur_elem->next;
 		else
 			check = 0;
-		free(cur_elem);
+		if (cur_elem)
+			free(cur_elem);
 		cur_elem = next_elem;
 	}
 	*lst = NULL;
