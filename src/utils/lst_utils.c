@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:39:15 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/10 19:41:47 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:30:16 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ t_list	*ft_lstnew(int num)
 
 	list = malloc(sizeof(t_list));
 	if (!list)
-		//return (NULL);
 		exit(0);
 	list->data = num;
 	list->score_b = 0;
 	list->score_a = 0;
-	list->resulting_score = 0; //to delete
+	list->resulting_score = 0;
 	list->next = NULL;
 	return (list);
 }
@@ -78,23 +77,12 @@ char	lst_is_sorted(t_list *lst)
 	return (1);
 }
 
-/*
-int	ft_lst_size(t_list *lst)
+int	ft_last_data(t_list *a)
 {
-	int	counter;
-
-	counter = 0;
-	while (lst)
-	{
-		counter++;
-		if (lst->next)
-			lst = lst->next;
-		else
-			lst = NULL;
-	}
-	return (counter);
+	while (a->next)
+		a = a->next;
+	return (a->data);
 }
-*/
 
 void	exitter(t_stacks *stacks, char mode)
 {

@@ -6,11 +6,26 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 16:26:29 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/10 19:27:38 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:20:58 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+char	array_searcher(int integrated, t_list **a, int **array, int *i)
+{
+	char	found;
+
+	found = 0;
+	while ((*a) && !found)
+	{
+		(*array)[(*i)++] = (*a)->data;
+		if ((*a)->data == integrated)
+			found = 1;
+		(*a) = (*a)->next;
+	}
+	return (found);
+}
 
 int	from_min_to_max(t_stacks *stacks, int **array)
 {
@@ -30,23 +45,10 @@ int	from_min_to_max(t_stacks *stacks, int **array)
 			break ;
 		a = a->next;
 	}
-	while (a && !found_max)
-	{
-		(*array)[i++] = a->data;
-		if (a->data == stacks->max)
-			found_max = 1;
-		a = a->next;
-	}
-	if (found_max)
+	if (array_searcher(stacks->max, &a, array, &i))
 		return (i);
 	a = stacks->a;
-	while (a)
-	{
-		(*array)[i++] = a->data;
-		if (a->data == stacks->max)
-			break ;
-		a = a->next;
-	}
+	array_searcher(stacks->max, &a, array, &i);
 	return (i);
 }
 

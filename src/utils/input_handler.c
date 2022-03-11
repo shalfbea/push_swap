@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 17:16:41 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/02/16 16:51:51y shalfbea         ###   ########.fr       */
+/*   Created: 2022/03/11 15:26:23 by shalfbea          #+#    #+#             */
+/*   Updated: 2022/03/11 15:31:51 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ static int	check_n_count(t_stacks *stacks)
 t_stacks	*init_and_input(int argc, char **argv)
 {
 	t_stacks	*stacks;
-
 
 	stacks = (t_stacks *) malloc(sizeof(t_stacks));
 	if (!stacks)

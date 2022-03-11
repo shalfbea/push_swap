@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:13:29 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/10 19:54:55 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:25:52 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	ft_atoi_helper(const char *str, int *sign, int *i, t_stacks *stacks)
 	}
 	else if (str[*i] == '+')
 		++(*i);
-	if ((!ft_isdigit(str[*i])))//&& (!ft_isspace(str[*i])))
+	if (!ft_isdigit(str[*i]))
 		exitter(stacks, 1);
 	return (*i);
 }

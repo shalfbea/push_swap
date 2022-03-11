@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:19:02 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/09 20:43:19 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:45:34 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,8 @@ void	renummer(t_stacks *stacks)
 	ft_lstclear(&sorted_head);
 }
 
-int	main(int argc, char **argv)
+static void	sort_chooser(t_stacks *stacks)
 {
-	t_stacks	*stacks;
-
-	stacks = init_and_input(argc, argv);
-	renummer(stacks);
-	finding_special_values(stacks, 1);
-	if (!stacks)
-		exitter(stacks, 1);
 	if (lst_is_sorted(stacks->a))
 		exitter(stacks, 0);
 	if (sort_three(stacks))
@@ -96,7 +89,19 @@ int	main(int argc, char **argv)
 	if (DEBUG_OUTPUT)
 		ft_putstr("\n=> ENDED PUSH TO B\n");
 	sorting(stacks);
-	if (!lst_is_sorted(stacks->a))
+}
+
+int	main(int argc, char **argv)
+{
+	t_stacks	*stacks;
+
+	stacks = init_and_input(argc, argv);
+	renummer(stacks);
+	finding_special_values(stacks, 1);
+	if (!stacks)
+		exitter(stacks, 1);
+	sort_chooser(stacks);
+	if (!lst_is_sorted(stacks->a) && DEBUG_OUTPUT)
 		ft_putstr("Something's wrong...\n");
 	exitter(stacks, 0);
 	return (0);

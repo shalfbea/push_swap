@@ -6,23 +6,14 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:24:40 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/10 18:59:09 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:36:47 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sort_three(t_stacks *stack)
+void	sort_three_cases(t_stacks *stack, int top, int mid, int bot)
 {
-	int		top;
-	int		mid;
-	int		bot;
-
-	if (stack->a_len != 3)
-		return (0);
-	top = stack->a->data;
-	mid = stack->a->next->data;
-	bot = stack->a->next->next->data;
 	if (top > mid && mid < bot && bot > top)
 		op_sa(stack, 1);
 	else if (top > mid && mid > bot && bot < top)
@@ -39,36 +30,22 @@ int	sort_three(t_stacks *stack)
 	}
 	else if (top < mid && mid > bot && bot < top)
 		op_rra(stack, 1);
+}
+
+int	sort_three(t_stacks *stack)
+{
+	int		top;
+	int		mid;
+	int		bot;
+
+	if (stack->a_len != 3)
+		return (0);
+	top = stack->a->data;
+	mid = stack->a->next->data;
+	bot = stack->a->next->next->data;
+	sort_three_cases(stack, top, mid, bot);
 	return (1);
 }
-/*
-void	ss_path_back(t_stacks *stacks)
-{
-	int		min;
-	int		counter;
-	int		last_counted;
-	t_list	*a;
-
-	a = stacks->a;
-	min = a->data;
-	last_counted = 0;
-	counter = 0;
-	while (a)
-	{
-		if (a->data < min)
-		{
-			min = a->data;
-			last_counted = counter;
-		}
-		a = a->next;
-		counter++;
-	}
-	counter = last_counted;
-	if (counter > stacks->a_len / 2)
-		counter = counter - stacks->a_len ;
-	ra_doer(stacks, counter);
-}
-*/
 
 void	ss_pusher(t_stacks *stacks, int mm, int mode)
 {
@@ -139,7 +116,6 @@ int	small_sort(t_stacks *stacks)
 			else
 				ss_pusher(stacks, tmp, -1);
 		}
-
 	}
 	turning_back(stacks);
 	return (1);

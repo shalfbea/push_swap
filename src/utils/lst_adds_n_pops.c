@@ -6,7 +6,7 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 16:26:39 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/08 21:49:46 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:29:44 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,4 @@ void	ft_lst_add_front(t_list **lst, int num)
 	tmp = ft_lstnew(num);
 	tmp->next = *lst;
 	*lst = tmp;
-}
-
-int	ft_last_data(t_list *a)
-{
-	while (a->next)
-		a = a->next;
-	return (a->data);
 }

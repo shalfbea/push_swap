@@ -6,17 +6,17 @@
 /*   By: shalfbea <shalfbea@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:08:16 by shalfbea          #+#    #+#             */
-/*   Updated: 2022/03/10 19:23:30 by shalfbea         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:38:15 by shalfbea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	a_score(t_stacks * stack, int num)
+int	a_score(t_stacks *stack, int num)
 {
-	int	start;
-	int	counter;
-	int	last;
+	int		start;
+	int		counter;
+	int		last;
 	t_list	*a;
 
 	a = stack->a;
@@ -58,11 +58,25 @@ void	score_marking(t_stacks *stacks)
 	}
 }
 
+int	resulting_score(t_stacks *stacks, t_list *b)
+{
+	int		min;
+	int		cases;
+
+	(void) stacks;
+	min = ft_abs(b->score_a) + ft_abs(b->score_b);
+	cases = 0;
+	if (b->score_a >= 0 && b->score_b >= 0)
+		return (ft_max2(b->score_a, b->score_b));
+	if (b->score_a <= 0 && b->score_b <= 0)
+		return (ft_max2(ft_abs(b->score_a), ft_abs(b->score_b)));
+	return (min);
+}
+
 t_op_num	element_to_move(t_stacks *stacks)
 {
-	t_list	*found;
-	t_list	*b;
-	int		minimum_operations;
+	t_list		*found;
+	t_list		*b;
 	t_op_num	result;
 
 	result.a = 0;
@@ -71,16 +85,12 @@ t_op_num	element_to_move(t_stacks *stacks)
 	b = stacks->b;
 	if (b == NULL)
 		return (result);
-	minimum_operations = abs(b->score_a) + abs(b->score_a);
 	found = b;
 	while (b)
 	{
 		b->resulting_score = resulting_score(stacks, b);
-		if (b->resulting_score < minimum_operations)
-		{
-			minimum_operations = b->resulting_score;
+		if (b->resulting_score < found->resulting_score)
 			found = b;
-		}
 		b = b->next;
 	}
 	result.a = found->score_a;
