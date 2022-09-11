@@ -28,6 +28,13 @@ this project
 	> ARG="5 7 9 2 4"
 	> ./push_swap $ARG
 
+Example:
+
+<img width="549" alt="pushswap_example" src="https://user-images.githubusercontent.com/92727363/189531777-c75d80e7-674e-4708-b92d-ed0a2dc710c3.png">
+Bonus example:
+
+<img width="345" alt="pushswap_example_2" src="https://user-images.githubusercontent.com/92727363/189531729-da0777ec-ce5d-40ad-863a-7686527efaa5.png">
+
 ## Technical task
 The full task can be found here: [Push_swap_subject](https://github.com/shalfbea/push_swap/blob/main/push_swap_subject.pdf)
 ### Code rules:
@@ -35,7 +42,7 @@ The full task can be found here: [Push_swap_subject](https://github.com/shalfbea
 - Code-style should respect the [The Norm](https://github.com/MagicHatJo/-42-Norm/blob/master/norme.en.pdf)
 - No memory leaks, segmentation faults, undefined behavior
 - Only allowed functions: read, write, malloc, free,
-exit, [ft_printf][https://github.com/shalfbea/ft_printf] (own realisation of classic printf)
+exit, [ft_printf](https://github.com/shalfbea/ft_printf) (own realisation of classic printf)
 - Can also use [libft](https://github.com/shalfbea/libft) (own implementation of part of the library functions)
 ### Rules of realisation
 - You have 2 stacks named a and b.
@@ -70,5 +77,4 @@ The last element becomes the first one.
 -  If after executing those instructions, the stack a is actually sorted and the stack b is empty, then the program must display "OK" followed by a ’\n’ on the standard
 - In every other case, it must display "KO" followed by a ’\n’ on the standard output.
 ## Result
-
-/image/
+<img width="1570" alt="shalfbea_pushswap_result" src="https://user-images.githubusercontent.com/92727363/189531694-28e73172-24be-4aa0-b610-60ed80583bc3.png">
